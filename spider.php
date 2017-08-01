@@ -82,11 +82,10 @@ function weixinSpider($name){
             $json=$weixinResult[0][0];
             $json=str_replace('msgList =', '', $json);
             $json=str_replace(';', '', $json);
-            $json=json_encode($json);
+            $json=str_replace('&amp', '&', $json);
+            // $json=json_encode($json);
 
-            $data['code']=200;
-            $data['list']=$json;
-            return json_encode($data);
+            return $json;
         }
     }
 }
